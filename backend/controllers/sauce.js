@@ -105,24 +105,24 @@ exports.likeDislike = (request, response) => {
       let nbLikes = sauce.likes;
       let nbDislikes = sauce.dislikes;
       switch (request.body.like) {
-          case -1:
-              Arrays.removeFromArray(usersLiked, request.body.userId);
-              usersDisliked.push(request.body.userId);
-              nbDislikes += 1;
-              break;
-          case 0:
-              if (Arrays.removeFromArray(usersLiked, request.body.userId)) {
-                  nbLikes -= 1;
-              } else {
-                  Arrays.removeFromArray(usersDisliked, request.body.userId)
-                  nbDislikes -= 1;
-              }
-              break;
-          case 1:
-              Arrays.removeFromArray(usersDisliked, request.body.userId);
-              usersLiked.push(request.body.userId);
-              nbLikes += 1;
-              break;
+        case -1:
+            Arrays.removeFromArray(usersLiked, request.body.userId);
+            usersDisliked.push(request.body.userId);
+            nbDislikes += 1;
+            break;
+        case 0:
+            if (Arrays.removeFromArray(usersLiked, request.body.userId)) {
+                nbLikes -= 1;
+            } else {
+                Arrays.removeFromArray(usersDisliked, request.body.userId)
+                nbDislikes -= 1;
+            }
+            break;
+        case 1:
+            Arrays.removeFromArray(usersDisliked, request.body.userId);
+            usersLiked.push(request.body.userId);
+            nbLikes += 1;
+            break;
       }
       const data = {
           likes: nbLikes,
